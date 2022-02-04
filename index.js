@@ -7,23 +7,19 @@ const {dbConnection} = require('./database/config');
 const app = express();
 //Configurar CORS
 app.use(cors());
+
+//Lectura y parseo del Body
+app.use(express.json());
+
 //Base de datos
 dbConnection();
 
 //console.log(process.env);
 
 //rutas
-app.get('/', (req, res) => {
-    //user: erik4052
-    //contraseña: kakiko99
-    res.json({
-        ok:true,
-        msg:'Hola mundo'
-    })
+app.use('/api/usuarios', require('./routes/usuarios'));
+app.use('/api/login', require('./routes/auth'));
 
-
-
-});
 
 
 
