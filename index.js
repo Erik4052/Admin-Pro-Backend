@@ -15,6 +15,8 @@ app.use(express.json());
 dbConnection();
 
 //console.log(process.env);
+//Directorio público
+app.use(express.static('public'));
 
 //rutas
 app.use('/api/usuarios', require('./routes/usuarios'));
